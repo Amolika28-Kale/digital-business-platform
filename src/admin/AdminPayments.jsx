@@ -6,7 +6,7 @@ export default function AdminPayments() {
   const [payments, setPayments] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/admin/payments", {
+    axios.get("https://digital-business-backend.onrender.com/api/admin/payments", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }

@@ -11,7 +11,7 @@ export default function UserPayments() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/payment/my",
+        "https://digital-business-backend.onrender.com/api/payment/my",
         {
           headers: {
             Authorization: `Bearer ${token}`,

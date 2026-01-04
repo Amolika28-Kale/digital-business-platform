@@ -21,7 +21,7 @@ export default function Register() {
 
     try {
       const res = await fetch(
-        "http://localhost:5000/api/payment/create-checkout",
+        "https://digital-business-backend.onrender.com/api/payment/create-checkout",
         {
           method: "POST",
           headers: {
