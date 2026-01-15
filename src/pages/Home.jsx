@@ -33,11 +33,28 @@ export default function Home() {
     { name: "Pricing", id: "pricing" },
   ];
 const features = [
-    { text: "No Inventory Required", icon: <Rocket size={18} /> },
-    { text: "Ready-Made Website", icon: <Globe size={18} /> },
-    { text: "Learn & Earn Model", icon: <BarChart3 size={18} /> },
-    { text: "12 Months Support", icon: <Clock size={18} /> },
-  ];
+  {
+    text: "7 Days Digital Marketing (Facebook & Instagram) Course",
+    icon: <Rocket size={18} />,
+    gradient: "from-indigo-500 to-purple-500",
+  },
+  {
+    text: "Your Own E-Commerce Website (Amazon / Flipkart / D2C)",
+    icon: <Globe size={18} />,
+    gradient: "from-pink-500 to-rose-500",
+  },
+  {
+    text: "50,000+ Ready-to-Sell Products Inventory",
+    icon: <BarChart3 size={18} />,
+    gradient: "from-emerald-500 to-teal-500",
+  },
+  {
+    text: "24/7 Expert Support & Mentorship",
+    icon: <Clock size={18} />,
+    gradient: "from-yellow-400 to-orange-500",
+  },
+];
+
 
   const feature = [
     { 
@@ -294,100 +311,126 @@ const features = [
       </AnimatePresence>
     </nav>
       {/* ================= HERO ================= */}
-     <section id="hero" className="relative bg-[#0f172a] text-white pt-32 pb-24 md:pt-48 md:pb-36 overflow-hidden">
-      {/* Background Aesthetic Elements */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-600/20 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-600/10 rounded-full blur-[100px]"></div>
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-      </div>
+<section id="hero" className="relative bg-[#0f172a] text-white pt-20 pb-30 md:pt-36 md:pb-24 overflow-hidden">
+  {/* ================= BACKGROUND LAYERS ================= */}
+  <div className="absolute inset-0 z-0">
+    {/* Gradient orbs */}
+    <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-indigo-600/30 rounded-full blur-[140px]" />
+    <div className="absolute top-1/2 -right-32 w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[120px]" />
+    <div className="absolute bottom-[-20%] left-1/3 w-[300px] h-[300px] bg-pink-600/20 rounded-full blur-[120px]" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Animated Badge */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 bg-indigo-500/10 border border-indigo-400/20 rounded-full text-sm font-medium text-indigo-300 backdrop-blur-md"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-          </span>
-          🚀 Beginner-Friendly Online Business Model
-        </motion.div>
+    {/* Noise texture */}
+    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/noisy-net.png')] opacity-[0.08]" />
+  </div>
 
-        {/* Main Heading */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-5xl md:text-7xl font-black tracking-tight leading-[1.1]"
-        >
-          Start Your Online Business in Just 7 Days  <br /> 
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
-          Without Inventory or Technical Skills
-          </span>
-        </motion.h1>
+  {/* ================= CONTENT ================= */}
+  <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    {/* Badge */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="inline-flex items-center gap-3 mb-10 px-5 py-2 rounded-full 
+      bg-white/5 border border-white/10 backdrop-blur-xl text-sm font-semibold text-indigo-300"
+    >
+      <span className="flex h-2 w-2 rounded-full bg-indigo-400 animate-pulse" />
+      Beginner-Friendly Online Business Model
+    </motion.div>
 
-        {/* Subtext */}
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="mt-8 text-lg md:text-xl max-w-2xl mx-auto text-slate-400 leading-relaxed"
-        >
-         Learn Digital Marketing, Get Your Own E-Commerce Website, Sell 50,000+ Products & Earn 
-Online — All for Just ₹5,500.
-        </motion.p>
+    {/* Heading */}
+    <motion.h1
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight"
+    >
+      Start Your Online Business
+      <br />
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+        In Just 7 Days
+      </span>
+    </motion.h1>
 
-        {/* Feature Grid */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3 }}
-          className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto"
-        >
-          {features.map((item, i) => (
-            <div
-              key={i}
-              className="group flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-2xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
-            >
-              <div className="text-indigo-400 group-hover:scale-110 transition-transform">
-                {item.icon}
-              </div>
-              <span className="text-sm font-semibold text-slate-200">{item.text}</span>
-            </div>
-          ))}
-        </motion.div>
+    {/* Subheading */}
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}
+      className="mt-8 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto"
+    >
+      Learn Digital Marketing, Get Your Own E-Commerce Website,
+      Sell 50,000+ Products & Earn Online —  
+      <span className="text-slate-200 font-semibold">
+        Without Inventory or Technical Skills
+      </span>
+    </motion.p>
 
-        {/* Call to Action Buttons */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-5"
+    {/* ================= FEATURES ================= */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.96 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.3 }}
+      className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+    >
+      {features.map((item, i) => (
+        <div
+          key={i}
+          className="group relative p-5 rounded-2xl bg-white/5 border border-white/10 
+          backdrop-blur-xl hover:bg-white/10 transition-all duration-300"
         >
-          <Link
-            to="/register"
-            className="group relative px-8 py-4 bg-indigo-600 rounded-xl font-bold text-white shadow-[0_0_20px_rgba(79,70,229,0.4)] hover:shadow-[0_0_30px_rgba(79,70,229,0.6)] transition-all overflow-hidden"
+          <div
+            className={`w-10 h-10 rounded-xl flex items-center justify-center
+            bg-gradient-to-r ${item.gradient} text-white mb-3
+            group-hover:scale-110 transition-transform`}
           >
-            <span className="relative z-10 flex items-center gap-2">
-              Get Started Now <CheckCircle2 size={18} />
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          </Link>
-          
-          <Link
-            to="/login"
-            className="px-8 py-4 rounded-xl font-bold border border-slate-700 hover:bg-slate-800 transition-colors"
-          >
-             Login
-          </Link>
-        </motion.div>
+            {item.icon}
+          </div>
+          <p className="text-sm font-semibold text-slate-200 leading-snug">
+            {item.text}
+          </p>
+        </div>
+      ))}
+    </motion.div>
 
-    
-      </div>
-    </section>
+    {/* ================= CTA ================= */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4 }}
+      className="mt-16 flex flex-col sm:flex-row justify-center gap-6"
+    >
+      <Link
+        to="/register"
+        className="relative px-10 py-4 rounded-xl font-bold text-white
+        bg-gradient-to-r from-indigo-600 to-purple-600
+        shadow-[0_0_30px_rgba(99,102,241,0.45)]
+        hover:shadow-[0_0_45px_rgba(99,102,241,0.7)]
+        transition-all"
+      >
+        <span className="flex items-center gap-2">
+          Get Started Now <CheckCircle2 size={18} />
+        </span>
+      </Link>
+
+      <Link
+        to="/login"
+        className="px-10 py-4 rounded-xl font-bold text-slate-200
+        border border-white/20 hover:bg-white/10 transition"
+      >
+        Login
+      </Link>
+    </motion.div>
+
+    {/* ================= TRUST LINE ================= */}
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.6 }}
+      className="mt-8 text-sm text-slate-500"
+    >
+      🔒 Secure Payments • 🚀 Instant Access • 📈 Proven Business Model
+    </motion.p>
+  </div>
+</section>
 
       {/* ================= ABOUT ================= */}
     <section id="about" className="relative py-24 bg-slate-50 overflow-hidden">
