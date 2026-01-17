@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {
-  UserClock,
   CheckCircle,
+  Clock,
   RefreshCcw,
   Trash2,
 } from "lucide-react";
@@ -93,7 +93,7 @@ export default function AdminPendingUsers() {
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
                     <div className="h-9 w-9 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center">
-                      <UserClock size={18} />
+                      <Clock size={18} />
                     </div>
                     <div>
                       <p className="font-semibold">{u.name}</p>
