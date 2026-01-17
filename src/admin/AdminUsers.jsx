@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
   Search,
@@ -9,7 +8,8 @@ import {
   CircleX,
   Ban,
   RotateCcw,
-  Unlock
+  Unlock,
+  Globe,
 } from "lucide-react";
 
 export default function AdminUsers() {
@@ -18,6 +18,8 @@ export default function AdminUsers() {
   const [actionUser, setActionUser] = useState(null);
 
   const token = localStorage.getItem("token");
+
+  /* ================= FETCH USERS ================= */
 
   const fetchUsers = async () => {
     try {
@@ -68,6 +70,24 @@ export default function AdminUsers() {
     alert("New password sent to user email");
   };
 
+  const generateWebsite = async (id) => {
+    if (!window.confirm("Generate website for this user?")) return;
+
+    try {
+      await axios.post(
+        `https://digital-business-backend.onrender.com/api/admin/websites/generate/${id}`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      alert("Website generated successfully");
+      setActionUser(null);
+      fetchUsers();
+    } catch (err) {
+      alert(err.response?.data?.message || "Failed to generate website");
+    }
+  };
+
   /* ================= UI ================= */
 
   return (
@@ -76,13 +96,16 @@ export default function AdminUsers() {
       <div>
         <h1 className="text-2xl font-bold text-slate-800">User Management</h1>
         <p className="text-sm text-slate-500">
-          Activate, disable or reset user accounts
+          Activate, disable, reset accounts & generate websites
         </p>
       </div>
 
       {/* Search */}
       <div className="relative w-full md:w-96">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+        <Search
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+          size={18}
+        />
         <input
           placeholder="Search users..."
           className="w-full pl-10 pr-4 py-2 border rounded-lg"
@@ -123,11 +146,11 @@ export default function AdminUsers() {
                   {/* PAYMENT */}
                   <td className="px-6 py-4">
                     {u.isPaid ? (
-                      <span className="badge badge-success">
+                      <span className="badge badge-success flex items-center gap-1">
                         <CircleCheck size={14} /> Paid
                       </span>
                     ) : (
-                      <span className="badge badge-muted">
+                      <span className="badge badge-muted flex items-center gap-1">
                         <CircleX size={14} /> Pending
                       </span>
                     )}
@@ -154,7 +177,18 @@ export default function AdminUsers() {
                     </button>
 
                     {actionUser === u._id && (
-                      <div className="absolute right-6 top-12 bg-white border rounded-xl shadow-md w-48 z-50">
+                      <div className="absolute right-6 top-12 bg-white border rounded-xl shadow-md w-52 z-50">
+                        {/* 🔥 GENERATE WEBSITE */}
+                        {u.isPaid && !u.websiteGenerated && (
+                          <button
+                            onClick={() => generateWebsite(u._id)}
+                            className="action-btn text-indigo-600"
+                          >
+                            <Globe size={16} /> Generate Website
+                          </button>
+                        )}
+
+                        {/* ENABLE / DISABLE */}
                         {u.isActive ? (
                           <button
                             onClick={() => disableUser(u._id)}
@@ -171,6 +205,7 @@ export default function AdminUsers() {
                           </button>
                         )}
 
+                        {/* RESET PASSWORD */}
                         <button
                           onClick={() => resetPassword(u._id)}
                           className="action-btn"
