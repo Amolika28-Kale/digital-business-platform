@@ -1,131 +1,189 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import React from "react";
-import { 
-  Search, 
-  MoreHorizontal, 
-  UserPlus, 
-  Filter, 
-  Mail, 
-  CircleCheck, 
-  CircleX 
+import {
+  Search,
+  MoreVertical,
+  Mail,
+  CircleCheck,
+  CircleX,
+  Ban,
+  RotateCcw,
+  Unlock
 } from "lucide-react";
 
 export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [actionUser, setActionUser] = useState(null);
+
+  const token = localStorage.getItem("token");
+
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.get(
+        "https://digital-business-backend.onrender.com/api/admin/users",
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setUsers(res.data);
+    } catch (err) {
+      console.error("Failed to load users");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    axios.get("https://digital-business-backend.onrender.com/api/admin/users", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    }).then(res => {
-      setUsers(res.data);
-      setLoading(false);
-    }).catch(() => setLoading(false));
+    fetchUsers();
   }, []);
+
+  /* ================= ACTION HANDLERS ================= */
+
+  const disableUser = async (id) => {
+    if (!window.confirm("Disable this user?")) return;
+    await axios.patch(
+      `/api/admin/users/${id}/disable`,
+      {},
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    fetchUsers();
+  };
+
+  const enableUser = async (id) => {
+    await axios.patch(
+      `/api/admin/users/${id}/enable`,
+      {},
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    fetchUsers();
+  };
+
+  const resetPassword = async (id) => {
+    if (!window.confirm("Reset password and email user?")) return;
+    await axios.post(
+      `/api/admin/users/${id}/reset-password`,
+      {},
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    alert("New password sent to user email");
+  };
+
+  /* ================= UI ================= */
 
   return (
     <div className="space-y-6">
-      {/* Header Section */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-800 tracking-tight">User Management</h1>
-          <p className="text-slate-500 text-sm mt-1">View, manage and verify your platform members.</p>
-        </div>
-      
+      {/* Header */}
+      <div>
+        <h1 className="text-2xl font-bold text-slate-800">User Management</h1>
+        <p className="text-sm text-slate-500">
+          Activate, disable or reset user accounts
+        </p>
       </div>
 
-      {/* Table Toolbar */}
-      <div className="bg-white border border-slate-200 rounded-t-2xl p-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
-        <div className="relative w-full sm:w-96">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-          <input 
-            type="text" 
-            placeholder="Search users..." 
-            className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
-          />
-        </div>
-        <div className="flex items-center gap-2">
-          <button className="flex items-center gap-2 px-3 py-2 text-slate-600 border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors">
-            <Filter size={16} />
-            Filters
-          </button>
-        </div>
+      {/* Search */}
+      <div className="relative w-full md:w-96">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+        <input
+          placeholder="Search users..."
+          className="w-full pl-10 pr-4 py-2 border rounded-lg"
+        />
       </div>
 
-      {/* Table Container */}
-      <div className="bg-white border border-slate-200 rounded-b-2xl shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-slate-50/50 border-b border-slate-200">
-                <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">User Details</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Joined Date</th>
+      {/* Table */}
+      <div className="bg-white border rounded-2xl overflow-hidden">
+        <table className="w-full">
+          <thead className="bg-slate-50">
+            <tr>
+              <th className="px-6 py-4 text-left text-xs font-bold">USER</th>
+              <th className="px-6 py-4 text-left text-xs font-bold">PAYMENT</th>
+              <th className="px-6 py-4 text-left text-xs font-bold">STATUS</th>
+              <th className="px-6 py-4 text-right text-xs font-bold">ACTIONS</th>
+            </tr>
+          </thead>
+
+          <tbody className="divide-y">
+            {loading ? (
+              <tr>
+                <td colSpan="4" className="p-6 text-center text-slate-400">
+                  Loading users...
+                </td>
               </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {loading ? (
-                [1, 2, 3].map((n) => (
-                  <tr key={n} className="animate-pulse">
-                    <td colSpan="4" className="px-6 py-4"><div className="h-10 bg-slate-100 rounded-lg w-full"></div></td>
-                  </tr>
-                ))
-              ) : (
-                users.map((u) => (
-                  <tr key={u._id} className="hover:bg-slate-50/80 transition-colors group">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xs">
-                          {u.name.charAt(0).toUpperCase()}
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-slate-800">{u.name}</p>
-                          <div className="flex items-center gap-1 text-slate-400 text-xs">
-                            <Mail size={12} />
-                            {u.email}
-                          </div>
-                        </div>
+            ) : (
+              users.map((u) => (
+                <tr key={u._id} className="hover:bg-slate-50">
+                  {/* USER */}
+                  <td className="px-6 py-4">
+                    <p className="font-semibold">{u.name}</p>
+                    <p className="text-xs text-slate-400 flex items-center gap-1">
+                      <Mail size={12} />
+                      {u.email}
+                    </p>
+                  </td>
+
+                  {/* PAYMENT */}
+                  <td className="px-6 py-4">
+                    {u.isPaid ? (
+                      <span className="badge badge-success">
+                        <CircleCheck size={14} /> Paid
+                      </span>
+                    ) : (
+                      <span className="badge badge-muted">
+                        <CircleX size={14} /> Pending
+                      </span>
+                    )}
+                  </td>
+
+                  {/* ACTIVE */}
+                  <td className="px-6 py-4">
+                    {u.isActive ? (
+                      <span className="badge badge-success">Active</span>
+                    ) : (
+                      <span className="badge badge-danger">Disabled</span>
+                    )}
+                  </td>
+
+                  {/* ACTIONS */}
+                  <td className="px-6 py-4 text-right relative">
+                    <button
+                      onClick={() =>
+                        setActionUser(actionUser === u._id ? null : u._id)
+                      }
+                      className="p-2 hover:bg-slate-100 rounded-lg"
+                    >
+                      <MoreVertical size={18} />
+                    </button>
+
+                    {actionUser === u._id && (
+                      <div className="absolute right-6 top-12 bg-white border rounded-xl shadow-md w-48 z-50">
+                        {u.isActive ? (
+                          <button
+                            onClick={() => disableUser(u._id)}
+                            className="action-btn text-red-600"
+                          >
+                            <Ban size={16} /> Disable User
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => enableUser(u._id)}
+                            className="action-btn text-emerald-600"
+                          >
+                            <Unlock size={16} /> Enable User
+                          </button>
+                        )}
+
+                        <button
+                          onClick={() => resetPassword(u._id)}
+                          className="action-btn"
+                        >
+                          <RotateCcw size={16} /> Reset Password
+                        </button>
                       </div>
-                    </td>
-                    <td className="px-6 py-4">
-                      {u.isPaid ? (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-100">
-                          <CircleCheck size={14} />
-                          Premium
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200">
-                          <CircleX size={14} />
-                          Free
-                        </span>
-                      )}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-slate-500">
-                      {new Date().toLocaleDateString()} {/* Replace with real join date if available */}
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <button className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all">
-                        <MoreHorizontal size={20} />
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-        
-        {/* Footer / Pagination Placeholder */}
-        <div className="px-6 py-4 border-t border-slate-100 bg-slate-50/30 flex justify-between items-center">
-          <p className="text-xs text-slate-500 font-medium">Showing {users.length} users</p>
-          <div className="flex gap-2">
-            <button className="px-3 py-1 text-xs font-bold border border-slate-200 rounded hover:bg-white transition-all disabled:opacity-50" disabled>Previous</button>
-            <button className="px-3 py-1 text-xs font-bold border border-slate-200 rounded hover:bg-white transition-all">Next</button>
-          </div>
-        </div>
+                    )}
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
