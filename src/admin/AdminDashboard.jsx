@@ -4,9 +4,9 @@ import {
   Users,
   TrendingUp,
   DollarSign,
-  UserClock,
   CreditCard,
   ArrowUpRight,
+  Clock,
 } from "lucide-react";
 
 export default function AdminDashboard() {
@@ -71,7 +71,7 @@ export default function AdminDashboard() {
     {
       title: "Pending Users",
       value: stats.pendingUsers,
-      icon: <UserClock size={24} className="text-amber-600" />,
+      icon: <Clock size={24} className="text-amber-600" />,
       bg: "bg-amber-50",
       trend: "Needs Action",
     },
