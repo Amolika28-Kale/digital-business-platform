@@ -19,6 +19,7 @@ import UserLayout from "./user/UserLayout";
 import UserDashboard from "./user/UserDashboard";
 import UserPayments from "./user/UserPayments";
 import UserProfile from "./user/UserProfile";
+import AdminPendingUsers from "./admin/AdminPendingUsers";
 
 
 export default function App() {
@@ -59,6 +60,8 @@ export default function App() {
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="users" element={<AdminUsers />} />
           <Route path="payments" element={<AdminPayments />} />
+          <Route path="pending-users" element={<AdminPendingUsers />} />
+
           <Route path="profile" element={<AdminProfile />} />
         </Route>
 

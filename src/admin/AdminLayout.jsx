@@ -25,6 +25,7 @@ export default function AdminLayout() {
     { name: "Dashboard", path: "/admin/dashboard", icon: <LayoutDashboard size={20} /> },
     { name: "Users", path: "/admin/users", icon: <Users size={20} /> },
     { name: "Payments", path: "/admin/payments", icon: <CreditCard size={20} /> },
+    { name: "Pending Users", path: "/admin/pending-users", icon: <UserCircle size={20} /> },
     { name: "Profile", path: "/admin/profile", icon: <UserCircle size={20} /> },
   ];
 
