@@ -603,83 +603,171 @@ const features = [
 
 
       {/* ================= ABOUT ================= */}
-    <section id="about" className="relative py-24 bg-slate-50 overflow-hidden">
-      {/* Subtle background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-40 pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-indigo-100 rounded-full blur-3xl"></div>
-      </div>
+{/* ================= ABOUT ================= */}
+<section id="about" className="relative py-24 bg-slate-50 overflow-hidden">
+  {/* Background Decoration */}
+  <div className="absolute top-0 left-0 w-full h-full opacity-40 pointer-events-none">
+    <div className="absolute top-20 left-10 w-64 h-64 bg-indigo-100 rounded-full blur-3xl"></div>
+  </div>
 
-      <div className="relative max-w-6xl mx-auto px-6">
-        {/* Header Section */}
-        <div className="text-center mb-20">
-          <motion.h2 
+  <div className="relative max-w-6xl mx-auto px-6">
+    {/* Header */}
+    <div className="text-center mb-20">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-4xl md:text-5xl font-black text-slate-900 mb-6"
+      >
+        {t("about.heading")}
+      </motion.h2>
+
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        className="w-24 h-1.5 bg-indigo-600 mx-auto rounded-full mb-8"
+      />
+
+      <p className="text-slate-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
+        {t("about.desc")}
+      </p>
+    </div>
+
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* ================= LEFT CONTENT ================= */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="space-y-8"
+      >
+        {/* Problem */}
+        <div className="bg-white p-8 rounded-3xl shadow-xl shadow-indigo-100/50 border border-slate-100">
+          <h3 className="text-2xl font-bold text-indigo-600 mb-4">
+            The Problem We Solve
+          </h3>
+
+          <div className="space-y-4 text-slate-700 leading-relaxed">
+            <p>
+              Most beginners get stuck at the first hurdle:
+              <span className="font-semibold text-slate-900 italic">
+                {" "}“What do I sell?”
+              </span>{" "}
+              or
+              <span className="font-semibold text-slate-900 italic">
+                {" "}“How do I build a website?”
+              </span>
+            </p>
+
+            <p>
+              We remove the guesswork. We provide structured marketing training,
+              your own pre-built e-commerce website, and handle 100% of the order
+              fulfillment.
+            </p>
+
+            <div className="p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-xl">
+              <p className="font-medium text-indigo-900">
+                “You focus on marketing — we handle products, delivery, and support.”
+              </p>
+            </div>
+          </div>
+        </div>
+ {/* Why Grow with Daya */}
+        <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg">
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            Why <span className="text-indigo-600">Grow with Daya</span>?
+          </h3>
+
+          <ul className="space-y-4 text-slate-700">
+            <li className="flex gap-3">
+              <span className="text-indigo-600 font-black">✓</span>
+              Real business model — not theory or motivation
+            </li>
+            <li className="flex gap-3">
+              <span className="text-indigo-600 font-black">✓</span>
+              Website, products, payment & delivery — all done for you
+            </li>
+            <li className="flex gap-3">
+              <span className="text-indigo-600 font-black">✓</span>
+              Step-by-step Facebook & Instagram ads training
+            </li>
+            <li className="flex gap-3">
+              <span className="text-indigo-600 font-black">✓</span>
+              Built for Indian beginners & regional languages
+            </li>
+          </ul>
+        </div>
+        {/* Who This Is For */}
+        <div className="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-3xl border border-indigo-100">
+          <h3 className="text-2xl font-bold text-indigo-600 mb-6">
+            This Program Is Perfect For
+          </h3>
+
+          <div className="grid sm:grid-cols-2 gap-4 text-slate-700">
+            <p>• Students looking for income skills</p>
+            <p>• Housewives wanting online earnings</p>
+            <p>• Small shop owners going digital</p>
+            <p>• Beginners with zero tech knowledge</p>
+            <p>• Anyone tired of fake online courses</p>
+            <p>• People serious about real business</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ================= RIGHT FEATURES ================= */}
+      <div className="grid sm:grid-cols-1 gap-4">
+        
+        {feature.map((item, i) => (
+          <motion.div
+            key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-slate-900 mb-6"
+            transition={{ delay: i * 0.1 }}
+            className="group p-6 bg-white border border-slate-200 rounded-2xl hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-200/40 transition-all duration-300"
           >
-{t("about.heading")}          </motion.h2>
-          <motion.div 
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            className="w-24 h-1.5 bg-indigo-600 mx-auto rounded-full mb-8"
-          ></motion.div>
-          <p className="text-slate-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
-           {t("about.desc")}
+            <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              {item.icon}
+            </div>
+            <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
+            <p className="text-sm text-slate-500 leading-relaxed">
+              {item.desc}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+
+    {/* ================= TRUST STATS ================= */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
+    >
+      {[
+        { value: "5,000+", label: "Products Ready" },
+        { value: "7 Days", label: "Live Training" },
+        { value: "0 Tech", label: "Experience Needed" },
+        { value: "100%", label: "Support Provided" },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="bg-white rounded-2xl p-6 text-center border border-slate-100 shadow-sm"
+        >
+          <h4 className="text-2xl font-black text-indigo-600">
+            {item.value}
+          </h4>
+          <p className="text-sm text-slate-500 mt-1">
+            {item.label}
           </p>
         </div>
+      ))}
+    </motion.div>
+  </div>
+</section>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Side: Content/Story */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div className="bg-white p-8 rounded-3xl shadow-xl shadow-indigo-100/50 border border-slate-100">
-              <h3 className="text-2xl font-bold text-indigo-600 mb-4">The Problem We Solve</h3>
-              <div className="space-y-4 text-slate-700 leading-relaxed">
-                <p>
-                  Most beginners get stuck at the first hurdle: <span className="font-semibold text-slate-900 italic">"What do I sell?"</span> or <span className="font-semibold text-slate-900 italic">"How do I build a website?"</span>
-                </p>
-                <p>
-                  We remove the guesswork. We provide **structured marketing training**, 
-                  your own **pre-built e-commerce website**, and handle 100% of the 
-                  order fulfillment.
-                </p>
-                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-xl">
-                  <p className="font-medium text-indigo-900">
-                    "You focus on marketing — we handle products, delivery, and support."
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side: Feature Cards */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {feature.map((feature, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group p-6 bg-white border border-slate-200 rounded-2xl hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-200/40 transition-all duration-300"
-              >
-                <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="font-bold text-slate-900 mb-2">{feature.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{feature.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
 
     
       {/* ================= FEATURES ================= */}
