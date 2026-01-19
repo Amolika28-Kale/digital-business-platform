@@ -7,9 +7,68 @@ import { CheckCircle2, Rocket, Globe, BarChart3, Clock, Zap, ShieldCheck, Packag
   ArrowUpCircle,
   } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+
+
+const translations = {
+  en: {
+    nav: {
+      about: "About",
+      features: "Features",
+      course: "Course",
+      how: "How it Works",
+      pricing: "Pricing",
+      enroll: "Enroll Now",
+    },
+    hero: {
+      badge: "Beginner-Friendly Online Business Model",
+      title1: "Start Your Online Business",
+      title2: "In Just 30 min",
+      subtitle:
+        "Learn Digital Marketing, Get Your Own E-Commerce Website, Sell 50,000+ Products & Earn Online — Without Inventory or Technical Skills",
+      cta: "Get Started Now",
+      login: "Login",
+    },
+    about: {
+      heading: "What Is This Platform?",
+      desc:
+        "A complete digital business system designed to bridge the gap between wanting to start and actually succeeding online.",
+    },
+  },
+
+  mr: {
+    nav: {
+      about: "आमच्याबद्दल",
+      features: "वैशिष्ट्ये",
+      course: "कोर्स",
+      how: "कसे कार्य करते",
+      pricing: "किंमत",
+      enroll: "नोंदणी करा",
+    },
+    hero: {
+      badge: "नवशिक्यांसाठी योग्य ऑनलाइन व्यवसाय मॉडेल",
+      title1: "तुमचा ऑनलाइन व्यवसाय सुरू करा",
+      title2: "फक्त ७ दिवसांत",
+      subtitle:
+        "डिजिटल मार्केटिंग शिका, स्वतःची ई-कॉमर्स वेबसाइट मिळवा, 50,000+ उत्पादने विक्री करा — कोणताही साठा किंवा तांत्रिक ज्ञानाशिवाय",
+      cta: "आता सुरू करा",
+      login: "लॉगिन",
+    },
+    about: {
+      heading: "हे प्लॅटफॉर्म काय आहे?",
+      desc:
+        "ऑनलाइन व्यवसाय सुरू करण्यापासून यशस्वी होईपर्यंतचा संपूर्ण डिजिटल सिस्टीम.",
+    },
+  },
+};
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+const [lang, setLang] = useState("en");
+
+const t = (key) => {
+  return key.split(".").reduce((obj, i) => obj?.[i], translations[lang]);
+};
 
   // Handle scroll effect for background
   useEffect(() => {
@@ -25,13 +84,14 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const navLinks = [
-    { name: "About", id: "about" },
-    { name: "Features", id: "features" },
-    { name: "Course", id: "course" },
-    { name: "How it Works", id: "how" },
-    { name: "Pricing", id: "pricing" },
-  ];
+const navLinks = [
+  { name: t("nav.about"), id: "about" },
+  { name: t("nav.features"), id: "features" },
+  { name: t("nav.course"), id: "course" },
+  { name: t("nav.how"), id: "how" },
+  { name: t("nav.pricing"), id: "pricing" },
+];
+
 const features = [
   {
     text: "7 Days Digital Marketing (Facebook & Instagram) Course",
@@ -218,98 +278,155 @@ const features = [
     "12 Months Personal Mentorship",
     "Daily Ad Creatives & Marketing Assets"
   ];
+
+  const packages = [
+  {
+    name: "Done-For-You Business Setup",
+    price: "₹14,999",
+    badge: "Best for Busy People",
+    gradient: "from-indigo-500 to-purple-500",
+    features: [
+      "30 Min Facebook & Instagram Marketing Setup",
+      "1 Professional E-Commerce Website",
+      "50,000+ Ready-to-Sell Products",
+      "Quick Launch Support",
+    ],
+  },
+  {
+    name: "7-Day Training Business Model",
+    price: "₹5,500",
+    badge: "Most Popular",
+    gradient: "from-emerald-500 to-teal-500",
+    features: [
+      "7 Days Facebook & Instagram Training",
+      "1 Professional E-Commerce Website",
+      "5,000+ Ready-to-Sell Products",
+      "Beginner Friendly Training",
+    ],
+  },
+];
+
   return (
     <div className="font-sans text-gray-800 scroll-smooth">
       {/* ================= NAVBAR ================= */}
-   <nav 
-      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
-        scrolled 
-        ? "py-3 bg-white/80 backdrop-blur-lg shadow-[0_2px_20px_rgba(0,0,0,0.05)]" 
-        : "py-5 bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        
-        {/* LOGO */}
-        <a href="#hero" className="flex items-center gap-2 group">
-          <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-                <Globe className="text-black" size={18} />
-              </div>
-              <span className="text-xl font-black text-white tracking-tight">PLATFORM</span>
-            </div>
-        </a>
-
-        {/* DESKTOP NAV */}
-        <div className="hidden md:flex items-center gap-8">
-          <div className="flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a 
-                key={link.id} 
-                href={`#${link.id}`} 
-                className={`text-sm font-bold uppercase tracking-wider transition-all hover:text-indigo-600 relative group ${
-                  scrolled ? "text-slate-600" : "text-slate-200"
-                }`}
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
-              </a>
-            ))}
-          </div>
-
-          <div className="h-6 w-px bg-slate-300/30 mx-2"></div>
-
-          <Link
-            to="/register"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-indigo-200 hover:shadow-indigo-300 transition-all active:scale-95 flex items-center gap-2"
-          >
-            Enroll Now <ShieldCheck size={16} />
-          </Link>
+<nav 
+  className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
+    scrolled 
+      ? "py-3 bg-white/80 backdrop-blur-lg shadow-[0_2px_20px_rgba(0,0,0,0.05)]" 
+      : "py-5 bg-transparent"
+  }`}
+>
+  <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    
+    {/* LOGO */}
+    <a href="#hero" className="flex items-center gap-2 group">
+      <div className="flex items-center gap-2">
+        <div className="w-9 h-9 bg-indigo-600 rounded-lg flex items-center justify-center">
+          <Globe className="text-white" size={18} />
         </div>
-
-        {/* MOBILE MENU TOGGLE */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className={`md:hidden p-2 rounded-lg transition-colors ${
-            scrolled ? "text-slate-900 bg-slate-100" : "text-white bg-white/10"
+        <span
+          className={`text-xl font-black tracking-tight ${
+            scrolled ? "text-slate-900" : "text-white"
           }`}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          Grow with Daya
+        </span>
+      </div>
+    </a>
+
+    {/* DESKTOP NAV */}
+    <div className="hidden md:flex items-center gap-8">
+      <div className="flex items-center gap-6">
+        {navLinks.map((link) => (
+          <a 
+            key={link.id} 
+            href={`#${link.id}`} 
+            className={`text-sm font-bold uppercase tracking-wider transition-all hover:text-indigo-600 relative group ${
+              scrolled ? "text-slate-600" : "text-slate-200"
+            }`}
+          >
+            {link.name}
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
+          </a>
+        ))}
       </div>
 
-      {/* MOBILE NAV DROPDOWN */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-slate-100 overflow-hidden shadow-xl"
+      <div className="h-6 w-px bg-slate-300/30 mx-2"></div>
+
+      {/* LANGUAGE SWITCH (DESKTOP) */}
+      <button
+        onClick={() => setLang(lang === "en" ? "mr" : "en")}
+        className="px-4 py-2 rounded-full text-sm font-bold border border-indigo-500
+                   text-indigo-600 hover:bg-indigo-600 hover:text-white transition"
+      >
+        {lang === "en" ? "मराठी" : "English"}
+      </button>
+
+      <Link
+        to="/register"
+        className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-indigo-200 hover:shadow-indigo-300 transition-all active:scale-95 flex items-center gap-2"
+      >
+        Enroll Now <ShieldCheck size={16} />
+      </Link>
+    </div>
+
+    {/* MOBILE MENU TOGGLE */}
+    <button
+      onClick={() => setMenuOpen(!menuOpen)}
+      className={`md:hidden p-2 rounded-lg transition-colors ${
+        scrolled ? "text-slate-900 bg-slate-100" : "text-white bg-white/10"
+      }`}
+    >
+      {menuOpen ? <X size={24} /> : <Menu size={24} />}
+    </button>
+  </div>
+
+  {/* MOBILE NAV DROPDOWN */}
+  <AnimatePresence>
+    {menuOpen && (
+      <motion.div 
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: 1, height: "auto" }}
+        exit={{ opacity: 0, height: 0 }}
+        className="md:hidden bg-white border-t border-slate-100 overflow-hidden shadow-xl"
+      >
+        <div className="px-6 py-8 space-y-6">
+          
+          {/* NAV LINKS */}
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={() => setMenuOpen(false)}
+              className="block text-lg font-bold text-slate-900 hover:text-indigo-600 transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+
+          {/* LANGUAGE SWITCH (MOBILE) */}
+          <button
+            onClick={() => setLang(lang === "en" ? "mr" : "en")}
+            className="w-full py-3 rounded-xl text-sm font-bold border border-indigo-500
+                       text-indigo-600 hover:bg-indigo-600 hover:text-white transition"
           >
-            <div className="px-6 py-8 space-y-6">
-              {navLinks.map((link) => (
-                <a
-                  key={link.id}
-                  href={`#${link.id}`}
-                  onClick={() => setMenuOpen(false)}
-                  className="block text-lg font-bold text-slate-900 hover:text-indigo-600 transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <Link
-                to="/register"
-                onClick={() => setMenuOpen(false)}
-                className="block w-full bg-indigo-600 text-white text-center py-4 rounded-2xl font-black shadow-lg"
-              >
-                Get Started Today
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+            {lang === "en" ? "मराठी" : "English"}
+          </button>
+
+          {/* CTA */}
+          <Link
+            to="/register"
+            onClick={() => setMenuOpen(false)}
+            className="block w-full bg-indigo-600 text-white text-center py-4 rounded-2xl font-black shadow-lg"
+          >
+            Get Started Today
+          </Link>
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</nav>
+
       {/* ================= HERO ================= */}
 <section id="hero" className="relative bg-[#0f172a] text-white pt-20 pb-30 md:pt-36 md:pb-24 overflow-hidden">
   {/* ================= BACKGROUND LAYERS ================= */}
@@ -326,15 +443,7 @@ const features = [
   {/* ================= CONTENT ================= */}
   <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
     {/* Badge */}
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="inline-flex items-center gap-3 mb-10 px-5 py-2 rounded-full 
-      bg-white/5 border border-white/10 backdrop-blur-xl text-sm font-semibold text-indigo-300"
-    >
-      <span className="flex h-2 w-2 rounded-full bg-indigo-400 animate-pulse" />
-      Beginner-Friendly Online Business Model
-    </motion.div>
+<motion.div>{t("hero.badge")}</motion.div>
 
     {/* Heading */}
     <motion.h1
@@ -343,10 +452,9 @@ const features = [
       transition={{ duration: 0.6 }}
       className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight"
     >
-      Start Your Online Business
-      <br />
+{t("hero.title1")}      <br />
       <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
-        In Just 7 Days
+       {t("hero.title2")}
       </span>
     </motion.h1>
 
@@ -357,12 +465,11 @@ const features = [
       transition={{ delay: 0.2 }}
       className="mt-8 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto"
     >
-      Learn Digital Marketing, Get Your Own E-Commerce Website,
-      Sell 50,000+ Products & Earn Online —  
+      {t("hero.subtitle")}
       <span className="text-slate-200 font-semibold">
-        Without Inventory or Technical Skills
       </span>
     </motion.p>
+
 
     {/* ================= FEATURES ================= */}
     <motion.div
@@ -407,7 +514,7 @@ const features = [
         transition-all"
       >
         <span className="flex items-center gap-2">
-          Get Started Now <CheckCircle2 size={18} />
+            {t("hero.cta")}<CheckCircle2 size={18} />
         </span>
       </Link>
 
@@ -416,8 +523,7 @@ const features = [
         className="px-10 py-4 rounded-xl font-bold text-slate-200
         border border-white/20 hover:bg-white/10 transition"
       >
-        Login
-      </Link>
+ {t("hero.login")}      </Link>
     </motion.div>
 
     {/* ================= TRUST LINE ================= */}
@@ -431,6 +537,70 @@ const features = [
     </motion.p>
   </div>
 </section>
+{/* ================= PACKAGES ================= */}
+<section className="mt-24">
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    className="text-center text-3xl md:text-4xl font-black text-blue mb-6"
+  >
+    Choose Your Business Package
+  </motion.h2>
+
+  <p className="text-center text-slate-800 max-w-2xl mx-auto mb-14">
+    Start your online business with a plan that fits your budget and time.
+  </p>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+    {packages.map((pkg, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: i * 0.2 }}
+        className="relative group rounded-3xl bg-indigo/5 border border-white/10 backdrop-blur-xl p-8 hover:bg-indigo/10 transition-all"
+      >
+        {/* Badge */}
+        <span className="absolute -top-4 left-6 px-4 py-1 text-xs font-bold rounded-full bg-indigo-600 text-black shadow-lg">
+          {pkg.badge}
+        </span>
+
+        {/* Title */}
+        <h3 className="text-2xl font-black text-black mb-2">
+          {pkg.name}
+        </h3>
+
+        {/* Price */}
+        <div className="text-4xl font-black text-blue bg-clip-text bg-gradient-to-r mb-6">
+          {pkg.price}
+        </div>
+
+        {/* Features */}
+        <ul className="space-y-4 mb-8">
+          {pkg.features.map((f, idx) => (
+            <li key={idx} className="flex items-start gap-3 text-slate-800">
+              <CheckCircle2 className="text-green-400 mt-0.5" size={18} />
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* CTA */}
+        <Link
+          to="/register"
+          className={`block text-center w-full py-4 rounded-xl font-bold text-white
+          bg-gradient-to-r ${pkg.gradient}
+          shadow-lg hover:scale-[1.02] transition-all`}
+        >
+          Get Started
+        </Link>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
 
       {/* ================= ABOUT ================= */}
     <section id="about" className="relative py-24 bg-slate-50 overflow-hidden">
@@ -448,8 +618,7 @@ const features = [
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black text-slate-900 mb-6"
           >
-            What Is This Platform?
-          </motion.h2>
+{t("about.heading")}          </motion.h2>
           <motion.div 
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -457,8 +626,7 @@ const features = [
             className="w-24 h-1.5 bg-indigo-600 mx-auto rounded-full mb-8"
           ></motion.div>
           <p className="text-slate-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
-            A complete digital business system designed to bridge the gap between 
-            wanting to start and actually succeeding online.
+           {t("about.desc")}
           </p>
         </div>
 
@@ -512,6 +680,8 @@ const features = [
         </div>
       </div>
     </section>
+
+    
       {/* ================= FEATURES ================= */}
    <section id="features" className="py-24 bg-[#f8fafc] relative overflow-hidden">
       {/* Background patterns */}
