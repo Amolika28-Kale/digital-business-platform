@@ -169,17 +169,45 @@ const stepsUI = [
           </a>
         ))}
       </div>
+      {/* LANGUAGE SWITCH (DESKTOP) */}
+<button
+  onClick={() => setLang(lang === "en" ? "mr" : "en")}
+  className={`relative w-24 h-10 rounded-full flex items-center transition-all duration-300
+    ${
+      scrolled
+        ? "bg-indigo-100 border border-indigo-300"
+        : "bg-white/20 border border-white/30 backdrop-blur"
+    }
+  `}
+>
+  {/* Sliding Knob */}
+  <span
+    className={`absolute top-1 left-1 w-8 h-8 rounded-full bg-white shadow-md
+      transition-all duration-300
+      ${lang === "mr" ? "translate-x-12" : "translate-x-0"}
+    `}
+  />
+
+  {/* EN */}
+  <span
+    className={`flex-1 text-xs font-bold z-10 text-center transition-colors
+      ${lang === "en" ? "text-indigo-600" : "text-slate-400"}
+    `}
+  >
+    EN
+  </span>
+
+  {/* मराठी */}
+  <span
+    className={`flex-1 text-xs font-bold z-10 text-center transition-colors
+      ${lang === "mr" ? "text-indigo-600" : "text-slate-400"}
+    `}
+  >
+    मराठी
+  </span>
+</button>
 
       <div className="h-6 w-px bg-slate-300/30 mx-2"></div>
-
-      {/* LANGUAGE SWITCH (DESKTOP) */}
-      <button
-        onClick={() => setLang(lang === "en" ? "mr" : "en")}
-        className="px-4 py-2 rounded-full text-sm font-bold border border-indigo-500
-                   text-indigo-600 hover:bg-indigo-600 hover:text-white transition"
-      >
-        {lang === "en" ? "मराठी" : "English"}
-      </button>
 
       <Link
         to="/register"
@@ -190,14 +218,49 @@ const stepsUI = [
     </div>
 
     {/* MOBILE MENU TOGGLE */}
-    <button
-      onClick={() => setMenuOpen(!menuOpen)}
-      className={`md:hidden p-2 rounded-lg transition-colors ${
-        scrolled ? "text-slate-900 bg-slate-100" : "text-white bg-white/10"
-      }`}
-    >
-      {menuOpen ? <X size={24} /> : <Menu size={24} />}
-    </button>
+{/* MOBILE ACTIONS */}
+<div className="md:hidden flex items-center gap-2">
+  
+  {/* MOBILE LANGUAGE SWITCH */}
+<button
+  onClick={() => setLang(lang === "en" ? "mr" : "en")}
+  className={`relative w-20 h-9 rounded-full flex items-center transition-all duration-300
+    ${scrolled ? "bg-indigo-100" : "bg-white/20 backdrop-blur"}
+  `}
+>
+  {/* Sliding Knob */}
+  <span
+    className={`absolute top-1 left-1 w-7 h-7 rounded-full bg-white shadow-md transition-all duration-300
+      ${lang === "mr" ? "translate-x-11" : "translate-x-0"}
+    `}
+  />
+
+  {/* Labels */}
+  <span className={`flex-1 text-xs font-bold z-10 text-center
+    ${lang === "en" ? "text-indigo-600" : "text-slate-400"}
+  `}>
+    EN
+  </span>
+
+  <span className={`flex-1 text-xs font-bold z-10 text-center
+    ${lang === "mr" ? "text-indigo-600" : "text-slate-400"}
+  `}>
+    मराठी
+  </span>
+</button>
+
+
+  {/* MENU TOGGLE */}
+  <button
+    onClick={() => setMenuOpen(!menuOpen)}
+    className={`p-2 rounded-lg transition-colors ${
+      scrolled ? "text-slate-900 bg-slate-100" : "text-white bg-white/10"
+    }`}
+  >
+    {menuOpen ? <X size={24} /> : <Menu size={24} />}
+  </button>
+</div>
+
   </div>
 
   {/* MOBILE NAV DROPDOWN */}
@@ -222,15 +285,6 @@ const stepsUI = [
               {link.name}
             </a>
           ))}
-
-          {/* LANGUAGE SWITCH (MOBILE) */}
-          <button
-            onClick={() => setLang(lang === "en" ? "mr" : "en")}
-            className="w-full py-3 rounded-xl text-sm font-bold border border-indigo-500
-                       text-indigo-600 hover:bg-indigo-600 hover:text-white transition"
-          >
-            {lang === "en" ? "मराठी" : "English"}
-          </button>
 
           {/* CTA */}
           <Link
