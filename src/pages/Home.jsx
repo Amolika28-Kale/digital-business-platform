@@ -1076,7 +1076,7 @@ const features = [
               <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
                 <Globe className="text-white" size={18} />
               </div>
-              <span className="text-xl font-black text-white tracking-tight">PLATFORM</span>
+              <span className="text-xl font-black text-white tracking-tight">Grow with Daya</span>
             </div>
             <p className="text-sm leading-relaxed text-slate-400">
               Empowering the next generation of digital entrepreneurs. We provide the tools, 
