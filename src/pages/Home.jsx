@@ -381,18 +381,19 @@ const stepsUI = [
       transition={{ delay: 0.4 }}
       className="mt-16 flex flex-col sm:flex-row justify-center gap-6"
     >
-      <Link
-        to="/register"
-        className="relative px-10 py-4 rounded-xl font-bold text-white
-        bg-gradient-to-r from-indigo-600 to-purple-600
-        shadow-[0_0_30px_rgba(99,102,241,0.45)]
-        hover:shadow-[0_0_45px_rgba(99,102,241,0.7)]
-        transition-all"
-      >
-        <span className="flex items-center gap-2">
-            {t("hero.cta")}<CheckCircle2 size={18} />
-        </span>
-      </Link>
+<a
+  href="#webinar"
+  className="relative px-10 py-4 rounded-xl font-bold text-white
+    bg-gradient-to-r from-indigo-600 to-purple-600
+    shadow-[0_0_30px_rgba(99,102,241,0.45)]
+    hover:shadow-[0_0_45px_rgba(99,102,241,0.7)]
+    transition-all"
+>
+  <span className="flex items-center gap-2">
+    {t("hero.cta")} <CheckCircle2 size={18} />
+  </span>
+</a>
+
 
       <Link
         to="/login"
