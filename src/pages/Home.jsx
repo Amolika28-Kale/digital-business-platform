@@ -5,6 +5,8 @@ import { CheckCircle2, Rocket, Globe, BarChart3, Clock, Zap, ShieldCheck, Packag
   Twitter, 
   Youtube,
   ArrowUpCircle,
+  CheckCircle,
+  Video,
   } from 'lucide-react';
   import {
   AlertTriangle,
@@ -42,7 +44,8 @@ const navLinks = [
   { name: t("nav.features"), id: "features" },
   { name: t("nav.course"), id: "course" },
   { name: t("nav.how"), id: "how" },
-  { name: t("nav.pricing"), id: "pricing" },
+  // { name: t("nav.pricing"), id: "pricing" },
+  {name : "webinar", id:"webinar"}
 ];
 
 const features = [
@@ -411,21 +414,21 @@ const stepsUI = [
   </div>
 </section>
 {/* ================= PACKAGES ================= */}
-<section className="mt-24">
-  <motion.h2
+{/* <section className="mt-24"> */}
+  {/* <motion.h2
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     className="text-center text-3xl md:text-4xl font-black text-blue mb-6"
   >
     {t("packages.heading")}
-  </motion.h2>
+  </motion.h2> */}
 
-  <p className="text-center text-slate-800 max-w-2xl mx-auto mb-14">
+  {/* <p className="text-center text-slate-800 max-w-2xl mx-auto mb-14">
     {t("packages.subheading")}
-  </p>
+  </p> */}
 
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+  {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
     {t("packages.list").map((pkg, i) => (
       <motion.div
         key={i}
@@ -434,34 +437,34 @@ const stepsUI = [
         viewport={{ once: true }}
         transition={{ delay: i * 0.2 }}
         className="relative group rounded-3xl bg-indigo/5 border border-white/10 backdrop-blur-xl p-8 hover:bg-indigo/10 transition-all"
-      >
+      > */}
         {/* Badge */}
-        <span className="absolute -top-4 left-6 px-4 py-1 text-xs font-bold rounded-full bg-indigo-600 text-black shadow-lg">
+        {/* <span className="absolute -top-4 left-6 px-4 py-1 text-xs font-bold rounded-full bg-indigo-600 text-black shadow-lg">
           {pkg.badge}
-        </span>
+        </span> */}
 
         {/* Title */}
-        <h3 className="text-2xl font-black text-black mb-2">
+        {/* <h3 className="text-2xl font-black text-black mb-2">
           {pkg.name}
-        </h3>
+        </h3> */}
 
         {/* Price */}
-        <div className="text-4xl font-black text-blue bg-clip-text bg-gradient-to-r mb-6">
+        {/* <div className="text-4xl font-black text-blue bg-clip-text bg-gradient-to-r mb-6">
           {pkg.price}
-        </div>
+        </div> */}
 
         {/* Features */}
-        <ul className="space-y-4 mb-8">
+        {/* <ul className="space-y-4 mb-8">
           {pkg.features.map((f, idx) => (
             <li key={idx} className="flex items-start gap-3 text-slate-800">
               <CheckCircle2 className="text-green-400 mt-0.5" size={18} />
               <span>{f}</span>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
         {/* CTA */}
-        <Link
+        {/* <Link
           to="/register"
           className={`block text-center w-full py-4 rounded-xl font-bold text-white
           bg-gradient-to-r ${i === 0 ? "from-indigo-500 to-purple-500" : "from-emerald-500 to-teal-500"}
@@ -472,7 +475,7 @@ const stepsUI = [
       </motion.div>
     ))}
   </div>
-</section>
+</section> */}
 
 {/* ================= ABOUT ================= */}
 <section
@@ -903,32 +906,32 @@ const stepsUI = [
 
 
 {/* ================= PRICING ================= */}
-<section id="pricing" className="py-24 bg-slate-50 relative overflow-hidden">
+{/* <section id="pricing" className="py-24 bg-slate-50 relative overflow-hidden"> */}
   {/* Background */}
-  <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
+  {/* <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
   <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-96 h-96 bg-pink-100 rounded-full blur-3xl opacity-50"></div>
 
-  <div className="max-w-4xl mx-auto px-6 relative z-10">
+  <div className="max-w-4xl mx-auto px-6 relative z-10"> */}
     {/* Header */}
-    <div className="text-center mb-12">
+    {/* <div className="text-center mb-12">
       <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
         {t("pricing.heading")}
       </h2>
       <p className="text-slate-500 text-lg">
         {t("pricing.subheading")}
       </p>
-    </div>
+    </div> */}
 
-    <motion.div
+    {/* <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       className="bg-white rounded-[2.5rem] shadow-2xl shadow-indigo-200/50 border border-slate-100 overflow-hidden"
     >
-      <div className="grid md:grid-cols-5">
+      <div className="grid md:grid-cols-5"> */}
         
         {/* LEFT: BENEFITS */}
-        <div className="md:col-span-3 p-8 md:p-12">
+        {/* <div className="md:col-span-3 p-8 md:p-12">
           <div className="flex items-center gap-2 text-indigo-600 font-bold text-sm uppercase tracking-wider mb-6">
             <Star size={16} fill="currentColor" />
             {t("pricing.badge")}
@@ -936,9 +939,9 @@ const stepsUI = [
 
           <h3 className="text-2xl font-bold text-slate-900 mb-8">
             {t("pricing.includesTitle")}
-          </h3>
+          </h3> */}
 
-          <ul className="space-y-4">
+          {/* <ul className="space-y-4">
             {t("pricing.benefits").map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-slate-600">
                 <div className="mt-1 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
@@ -948,14 +951,14 @@ const stepsUI = [
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
         {/* RIGHT: PRICE */}
-        <div className="md:col-span-2 bg-slate-900 p-8 md:p-12 text-center flex flex-col justify-center items-center">
+        {/* <div className="md:col-span-2 bg-slate-900 p-8 md:p-12 text-center flex flex-col justify-center items-center">
           <span className="text-slate-400 text-sm font-medium line-through mb-1">
             {t("pricing.regularPrice")}
-          </span>
-
+          </span> */}
+{/* 
           <div className="relative">
             <div className="text-6xl font-black text-white mb-2">
               {t("pricing.offerPrice")}
@@ -967,9 +970,9 @@ const stepsUI = [
 
           <p className="text-slate-400 text-sm mb-8">
             {t("pricing.paymentNote")}
-          </p>
+          </p> */}
 
-          <Link
+          {/* <Link
             to="/register"
             className="w-full bg-indigo-500 hover:bg-indigo-400 text-white py-4 rounded-2xl font-black text-lg shadow-[0_10px_20px_rgba(99,102,241,0.3)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
           >
@@ -984,16 +987,139 @@ const stepsUI = [
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.div> */}
 
     {/* Footer */}
-    <div className="mt-12 text-center">
+    {/* <div className="mt-12 text-center">
       <p className="text-slate-500 text-sm">
         {t("pricing.footer")}
       </p>
     </div>
   </div>
+</section> */}
+
+{/* ================= FREE WEBINAR ================= */}
+<section
+  id="webinar"
+  className="relative py-24 bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 overflow-hidden"
+>
+  {/* Decorative Background */}
+  <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+  <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl"></div>
+
+  <div className="relative max-w-6xl mx-auto px-6">
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+      {/* ================= LEFT CONTENT ================= */}
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        {/* Badge */}
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 text-white text-sm font-bold mb-6">
+          <Video size={16} />
+          {t("webinar.badge")}
+        </span>
+
+        {/* Heading */}
+        <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+          {t("webinar.heading")}
+        </h2>
+
+        {/* Subheading */}
+        <p className="text-indigo-100 text-lg mb-8 max-w-xl">
+          {t("webinar.subheading")}
+        </p>
+
+        {/* Points */}
+        <ul className="space-y-4">
+          {t("webinar.points").map((point, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-3 text-indigo-100 font-medium"
+            >
+              <CheckCircle className="text-green-400 mt-0.5" size={20} />
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+
+      {/* ================= RIGHT FORM ================= */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="bg-white rounded-3xl shadow-2xl p-8 md:p-10"
+      >
+        {/* Form Header */}
+        <h3 className="text-2xl font-black text-slate-900 mb-2">
+          {t("webinar.form.title")}
+        </h3>
+        <p className="text-slate-500 text-sm mb-6">
+          {t("webinar.form.note")}
+        </p>
+
+        {/* Form */}
+        <form className="space-y-5">
+          {/* Name */}
+          <div>
+            <label className="text-sm font-bold text-slate-700">
+              {t("webinar.form.name")}
+            </label>
+            <input
+              type="text"
+              placeholder={t("webinar.form.namePlaceholder")}
+              className="mt-1 w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              required
+            />
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label className="text-sm font-bold text-slate-700">
+              {t("webinar.form.phone")}
+            </label>
+            <input
+              type="tel"
+              placeholder={t("webinar.form.phonePlaceholder")}
+              className="mt-1 w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              required
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="text-sm font-bold text-slate-700">
+              {t("webinar.form.email")}
+            </label>
+            <input
+              type="email"
+              placeholder={t("webinar.form.emailPlaceholder")}
+              className="mt-1 w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            />
+          </div>
+
+          {/* CTA */}
+          <button
+            type="submit"
+            className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-black text-lg shadow-lg transition-all active:scale-95"
+          >
+            {t("webinar.form.cta")}
+            <ArrowRight size={20} />
+          </button>
+
+          {/* Privacy */}
+          <p className="text-xs text-slate-400 text-center mt-3">
+            {t("webinar.form.privacy")}
+          </p>
+        </form>
+      </motion.div>
+    </div>
+  </div>
 </section>
+
 
 
 {/* ================= FOOTER ================= */}

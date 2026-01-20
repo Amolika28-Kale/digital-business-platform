@@ -6,6 +6,7 @@ export const translations = {
       course: "Course",
       how: "How it Works",
       pricing: "Pricing",
+      webinar : "webinar",
       enroll: "Enroll Now",
     },
  hero: {
@@ -275,6 +276,33 @@ export const translations = {
       footer:
         "Not sure yet? Speak with an advisor about our 7-day refund policy.",
     },
+    webinar: {
+  badge: "LIVE FREE WEBINAR",
+  heading: "Understand How Successful Sellers Execute Their Online Business",
+  subheading:
+    "Learn the exact systems, tools, and workflows used to build profitable online stores — even if you are starting from zero.",
+
+  points: [
+    "Real business execution walkthrough",
+    "Live Q&A with industry experts",
+    "No theory — only practical steps",
+    "Perfect for beginners & working professionals",
+  ],
+
+  form: {
+    title: "Enroll for FREE",
+    note: "Limited seats • Instant confirmation on WhatsApp",
+    name: "Full Name",
+    phone: "WhatsApp Number",
+    email: "Email (optional)",
+    namePlaceholder: "Enter your full name",
+    phonePlaceholder: "Enter WhatsApp number",
+    emailPlaceholder: "Enter your email",
+    cta: "Reserve My Free Seat",
+    privacy: "We respect your privacy. No spam. Unsubscribe anytime.",
+  },
+},
+
     footer: {
       brandDesc:
         "Empowering the next generation of digital entrepreneurs. We provide the tools, the training, and the fulfillment so you can focus on building your empire.",
@@ -312,6 +340,7 @@ export const translations = {
       course: "कोर्स",
       how: "कसे कार्य करते",
       pricing: "किंमत",
+      webinar : " ",
       enroll: "नोंदणी करा",
     },
 hero: {
@@ -581,6 +610,33 @@ hero: {
       footer:
         "अजून शंका आहेत? ७ दिवसांच्या रिफंड पॉलिसीसाठी आमच्या सल्लागाराशी बोला.",
     },
+    webinar: {
+  badge: "मोफत लाईव्ह वेबिनार",
+  heading: "यशस्वी विक्रेते आपला ऑनलाइन व्यवसाय कसा चालवतात ते समजून घ्या",
+  subheading:
+    "पूर्ण शून्यापासून नफ्याचा ऑनलाइन व्यवसाय कसा तयार करायचा हे प्रत्यक्ष सिस्टम्स आणि टूल्ससह शिका.",
+
+  points: [
+    "खऱ्या व्यवसायाची प्रत्यक्ष अंमलबजावणी",
+    "तज्ञांसोबत लाईव्ह प्रश्नोत्तर सत्र",
+    "फक्त थिअरी नाही — प्रत्यक्ष स्टेप्स",
+    "नवशिके व नोकरी करणाऱ्यांसाठी योग्य",
+  ],
+
+  form: {
+    title: "मोफत नोंदणी करा",
+    note: "मर्यादित जागा • WhatsApp वर त्वरित कन्फर्मेशन",
+    name: "पूर्ण नाव",
+    phone: "WhatsApp नंबर",
+    email: "ईमेल (ऐच्छिक)",
+    namePlaceholder: "तुमचे पूर्ण नाव टाका",
+    phonePlaceholder: "WhatsApp नंबर टाका",
+    emailPlaceholder: "ईमेल टाका",
+    cta: "माझी मोफत जागा बुक करा",
+    privacy: "आम्ही तुमची माहिती सुरक्षित ठेवतो. कोणताही स्पॅम नाही.",
+  },
+},
+
     footer: {
       brandDesc:
         "डिजिटल उद्योजकांची पुढची पिढी सक्षम करणे हे आमचे ध्येय आहे. आम्ही टूल्स, प्रशिक्षण आणि डिलिव्हरी सांभाळतो — तुम्ही तुमचा व्यवसाय वाढवा.",
